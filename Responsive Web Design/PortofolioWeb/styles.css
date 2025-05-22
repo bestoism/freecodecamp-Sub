@@ -1,0 +1,407 @@
+/* styles.css */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #ecf0f1;
+}
+
+header {
+    background: #2c3e50;
+    color: #fff;
+    padding: 1rem 0;
+    position: fixed;
+    top: -60px;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    opacity: 0;
+    transition: top 0.5s ease-in-out, opacity 0.5s ease-in-out;
+}
+
+nav ul {
+    list-style: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #d4af37;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 2rem;
+    transition: transform 0.3s, box-shadow 0.3s;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.container:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+section {
+    padding: 2rem 0;
+}
+
+#home {
+    background: url('bgweb.jpg') no-repeat center center/cover;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+#home h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    animation: fadeInDown 1s ease-in-out;
+}
+
+#home p {
+    font-size: 1.5rem;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#home .container {
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+}
+
+#about,
+#work,
+#skills,
+#experience,
+#testimonials,
+#contact {
+    background: #f4f4f4;
+    padding: 2rem 0;
+}
+
+#about .profile-pic {
+    float: left;
+    margin-right: 20px;
+    animation: fadeInLeft 1s ease-in-out;
+    transition: transform 0.3s;
+}
+
+#about .profile-pic:hover {
+    transform: scale(1.05);
+}
+
+#about img {
+    border-radius: 50%;
+    max-width: 150px;
+}
+
+#about p {
+    text-align: justify;
+    animation: fadeInRight 1s ease-in-out;
+}
+
+#work .projects {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Jarak antar proyek */
+}
+
+#work .projects .project {
+    width: calc(25% - 20px); /* Menyesuaikan lebar proyek */
+    perspective: 1000px; /* Menambahkan perspektif untuk efek 3D */
+    margin-bottom: 40px; /* Tambah margin bawah untuk spasi */
+    display: flex;
+    flex-direction: column; /* Susun secara vertikal */
+    align-items: center;
+}
+
+#work .projects .project .inner {
+    position: relative;
+    width: 100%;
+    height: 200px; /* Sesuaikan tinggi proyek */
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+#work .projects .project.flipped .inner {
+    transform: rotateY(180deg); /* Memutar seluruh elemen saat di-klik */
+}
+
+#work .projects .project .front,
+#work .projects .project .back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden; /* Menyembunyikan sisi belakang saat tidak terlihat */
+    border-radius: 10px;
+}
+
+#work .projects .project .front {
+    background: #fff;
+    color: #333;
+}
+
+#work .projects .project .back {
+    background: #d4af37;
+    color: #fff;
+    transform: rotateY(180deg); /* Memutar sisi belakang */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px;
+}
+
+#work .projects .project img {
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: all 0.5s ease-in-out;
+    object-fit: cover;
+    object-position: center;
+    filter: grayscale(100%) brightness(90%);
+}
+
+#work .projects .project:hover img {
+    transform: scale(1.05);
+    filter: grayscale(0%) brightness(100%);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+#work .project-description {
+    text-align: center; /* Memusatkan teks dan tombol */
+}
+
+#work .project-description p {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#work .project-description button {
+    background-color: #d4af37; /* Warna dasar emas lembut */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Tambahkan animasi */
+    display: inline-block;
+    margin: 20px auto 0;
+}
+
+#work .project-description button:hover {
+    background-color: #2c3e50; /* Warna saat di-hover */
+    transform: scale(1.05); /* Animasi membesar saat di-hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+}
+
+#work .project-description button:active {
+    transform: scale(0.98); /* Sedikit mengecil saat ditekan */
+}
+
+#skills ul {
+    list-style: none;
+    padding-left: 0;
+    margin-right: 20px;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#skills ul li {
+    margin: 10px 0;
+    font-size: 1.1rem;
+}
+
+#experience div {
+    margin-bottom: 20px;
+    animation: fadeInRight 1s ease-in-out;
+}
+
+#experience h3 {
+    margin-bottom: 5px;
+}
+
+#testimonials blockquote {
+    font-style: italic;
+    color: #555;
+    margin: 20px auto;
+    padding: 10px 20px;
+    border-left: 5px solid #ffa500;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#contact {
+    text-align: center;
+    animation: fadeInUp 1s ease-in-out;
+}
+
+#contact p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+}
+
+#contact .social-icons {
+    text-align: center;
+    margin-top: 10px;
+}
+
+#contact .social-icons a {
+    margin: 0 10px;
+    color: #333;
+    text-decoration: none;
+    font-size: 1.5rem;
+    transition: color 0.3s;
+}
+
+#contact .social-icons a:hover {
+    color: #d4af37;
+}
+
+#contact .social-icons a i {
+    font-size: 2rem;
+}
+
+#contact button {
+    background-color: #d4af37;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s; /* Tambahkan transform untuk animasi */
+}
+
+#contact button:hover {
+    background-color: #2c3e50;
+    transform: scale(1.05); /* Animasi membesar saat di-hover */
+}
+
+#contact button:active {
+    transform: scale(0.98); /* Sedikit mengecil saat ditekan */
+}
+
+footer {
+    background: #2c3e50;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+}
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    0% {
+        opacity: 0;
+        transform: translateX(20px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+#home h1:hover, #home p:hover {
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6);
+    transition: text-shadow 0.3s ease-in-out;
+}
+
+.button-container {
+    text-align: center; /* Memusatkan tombol */
+}
+
+.button-container button {
+    background-color: #d4af37; /* Warna dasar emas lembut */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Tambahkan animasi */
+    display: inline-block;
+    margin: 20px auto;
+}
+
+.button-container button:hover {
+    background-color: #2c3e50; /* Warna saat di-hover */
+    transform: scale(1.05); /* Animasi membesar saat di-hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+}
+
+.button-container button:active {
+    transform: scale(0.98); /* Sedikit mengecil saat ditekan */
+}
+
+.container h1, .container h2 {
+    text-align: center; /* Memusatkan judul */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+#work h2 {
+    margin-bottom: 20px; /* Tambahkan margin bawah untuk spasi */
+}

@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ryan Besto Saragih</title>
+    <link rel="icon" type="image/png" href="lakaka.png">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+        nav ul li a:hover {
+            color: #ff6347;
+            transition: color 0.3s ease;
+        }
+        .project .inner {
+            transition: transform 0.5s;
+        }
+        .project:hover .inner {
+            transform: scale(1.05);
+        }
+        .container h1, .container h2 {
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+        .social-icons a {
+            transition: transform 0.3s;
+        }
+        .social-icons a:hover {
+            transform: scale(1.2);
+        }
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+        .video-background video {
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        #home {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            z-index: 1;
+        }
+        #about, #work, #skills, #experience, #testimonials, #contact {
+            position: relative;
+            z-index: 1;
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        .trail {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            pointer-events: none;
+            animation: fadeOut 1s forwards;
+        }
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                transform: scale(2);
+            }
+        }
+        /* Styling untuk skills section */
+        #skills {
+            padding: 60px 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 20px;
+        }
+
+        .skill-box {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(31, 38, 135, 0.25);
+        }
+
+        .skill-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+        }
+
+        .skill-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            color: #2196F3;
+            text-align: center;
+        }
+
+        .skill-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .skill-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            margin-top: 15px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            border-radius: 4px;
+            transition: width 1s ease-in-out;
+        }
+
+        /* Styling untuk container di dalam section */
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 0 auto;
+            max-width: 1200px;
+            width: 90%;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+        }
+
+        /* Styling untuk section headers */
+        .container h2 {
+            position: relative;
+            margin-bottom: 40px;
+            padding-bottom: 15px;
+            color: #333;
+        }
+
+        .container h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            border-radius: 2px;
+        }
+
+        /* Update untuk blockquote di testimonials */
+        blockquote {
+            background: rgba(255, 255, 255, 0.8);
+            border-left: 4px solid #2196F3;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Update untuk profile-pic */
+        .profile-pic {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 10px;
+            border-radius: 50%;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.15);
+            margin: 20px auto;
+            width: fit-content;
+        }
+
+        /* Update untuk social-icons */
+        .social-icons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin: 30px 0;
+        }
+
+        .social-icons a {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 50%;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            color: #2196F3;
+        }
+
+        /* Update untuk buttons */
+        button {
+            background: linear-gradient(45deg, #2196F3, #00BCD4);
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        #navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background-color: #333;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        #navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        #welcome-section {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #f4f4f4;
+        }
+
+        #projects {
+            padding: 50px;
+            background-color: #eaeaea;
+        }
+
+        .project-tile {
+            margin: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+
+        /* Media query for responsiveness */
+        @media (max-width: 600px) {
+            .project-tile {
+                width: 100%;
+                box-sizing: border-box;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="nav-header">
+        <nav id="navbar">
+            <ul> 
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#work">Work</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#testimonials">Testimonials</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#welcome-section">Welcome</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a id="profile-link" href="https://github.com" target="_blank">GitHub Profile</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home">
+        <div class="video-background">
+            <video autoplay muted loop>
+                <source src="wallpaperflare.com_wallpaper (5).jpg">
+                Your browser does not support the video tag.
+            </video>
+        </div>
+        <div class="container">
+            <h1>Ryan Besto Saragih</h1>
+            <p>Welcome to my personal website! I am a web developer and tech enthusiast.</p>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <h2>About Me</h2>
+            <div class="profile-pic">
+                <img src="prof.png" alt="Profile Picture">
+            </div>
+            <p>Hello! My name is Ryan Besto Saragih, a passionate web developer with a love for coding and problem-solving.
+                I enjoy creating dynamic and responsive websites that offer users an intuitive and engaging experience.
+                When I'm not coding, I love jogging and exploring the latest trends in technology. My goal is to continually grow
+                and refine my skills while contributing to exciting and innovative projects.</p>
+            <p>Over the years, I have honed my skills in various programming languages and frameworks, allowing me to tackle complex
+                challenges with confidence. I believe in the power of collaboration and am always eager to learn from others and share
+                my knowledge. My journey in tech has been driven by curiosity and a desire to make a positive impact through technology.</p>
+            <p>In my free time, I enjoy reading tech blogs, experimenting with new coding techniques, and participating in hackathons.
+                I am also an advocate for open-source projects and love contributing to the community. My philosophy is to keep pushing
+                the boundaries of what's possible and to never stop learning.</p>
+        </div>
+    </section>
+
+    <section id="work">
+        <div class="container">
+            <h2>My Work</h2>
+            <div class="projects">
+                <div class="project" onclick="this.classList.toggle('flKipped')">
+                    <div class="inner">
+                        <div class="front">
+                            <img src="work1.jpeg" alt="Project 1">
+                        </div>
+                        <div class="back">
+                            <p>My Work #1</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project" onclick="this.classList.toggle('flipped')">
+                    <div class="inner">
+                        <div class="front">
+                            <img src="work2.jpeg" alt="Project 2">
+                        </div>
+                        <div class="back">
+                            <p>My Work #2</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project" onclick="this.classList.toggle('flipped')">
+                    <div class="inner">
+                        <div class="front">
+                            <img src="work3.jpeg" alt="Project 3">
+                        </div>
+                        <div class="back">
+                            <p>My Work #3</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="project" onclick="this.classList.toggle('flipped')">
+                    <div class="inner">
+                        <div class="front">
+                            <img src="work4.jpeg" alt="Project 4">
+                        </div>
+                        <div class="back">
+                            <p>My Work #4</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <p>This is one of the projects I am proud of. It showcases a fully functional e-commerce website built using
+                HTML, CSS, and JavaScript. The website features a user-friendly interface, secure payment gateway integration,
+                and a responsive design that works seamlessly across all devices.</p>
+            <div class="button-container">
+                <button onclick="location.href='#contact'">Get in Touch</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills">
+        <div class="container">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-container">
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3 class="skill-title">Frontend Development</h3>
+                    <p class="skill-description">HTML5 & CSS3 - Proficient in creating responsive layouts and modern designs</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fas fa-js"></i>
+                    </div>
+                    <h3 class="skill-title">JavaScript</h3>
+                    <p class="skill-description">Expert in ES6+, DOM manipulation, and modern JavaScript frameworks</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h3 class="skill-title">Python</h3>
+                    <p class="skill-description">Skilled in automation, data analysis, and backend development</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fab fa-react"></i>
+                    </div>
+                    <h3 class="skill-title">React.js</h3>
+                    <p class="skill-description">Experienced in building dynamic and interactive user interfaces</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fab fa-node-js"></i>
+                    </div>
+                    <h3 class="skill-title">Node.js</h3>
+                    <p class="skill-description">Proficient in server-side development and RESTful APIs</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-box">
+                    <div class="skill-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3 class="skill-title">Database Management</h3>
+                    <p class="skill-description">Experienced with SQL and NoSQL databases</p>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="experience">
+        <div class="container">
+            <h2>Experience</h2>
+            <div>
+                <h3>Web Developer at Company X</h3>
+                <p>At Company X, I played a key role in developing and maintaining the company's website. I worked closely
+                    with the design team to implement a modern, responsive design that improved user engagement and boosted conversion rates.</p>
+            </div>
+            <div>
+                <h3>Intern at Tech Company Y</h3>
+                <p>During my internship at Tech Company Y, I contributed to the development of a mobile application using React Native.
+                    I gained valuable experience in mobile development and worked on enhancing the app's performance and usability.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="testimonials">
+        <div class="container">
+            <h2>Testimonials</h2>
+            <blockquote>
+                "Ryan is an exceptional developer who brings a wealth of knowledge and experience to any project he works on.
+                His ability to communicate complex concepts clearly is second to none."
+            </blockquote>
+            <blockquote>
+                "Working with Ryan was a pleasure. He is a true professional and delivered high-quality work on time and on budget."
+            </blockquote>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Contact</h2>
+            <p>If you'd like to get in touch or collaborate on a project, feel free to reach out via email or connect with me on social media!</p>
+            <p>Email: <a href="mailto:bestoisme24@gmail.com">bestoisme24@gmail.com</a></p>
+            <div class="social-icons">
+                <a href="https://www.facebook.com/DinnerBesto" target="_blank"><i class="fab fa-facebook"></i></a>
+                <a href="https://twitter.com/bestoisme" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.linkedin.com/in/RyanBestoSaragih" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/ryanbesto_" target="_blank"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.youtube.com/channel/Bestoisme" target="_blank"><i class="fab fa-youtube"></i></a>
+            </div>
+            <button onclick="location.href='mailto:bestoisme24@gmail.com'">Send me an Email</button>
+        </div>
+    </section>
+
+    <section id="welcome-section">
+        <h1>Welcome to My Portfolio</h1>
+    </section>
+
+    <section id="projects">
+        <h2>My Projects</h2>
+        <a class="project-tile" href="https://example.com/project1" target="_blank">Project 1</a>
+        <a class="project-tile" href="https://example.com/project2" target="_blank">Project 2</a>
+    </section>
+
+    <footer id="footer">
+        <div>
+            <p>&copy; 2024 Ryan Besto Saragih. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        document.addEventListener('mousemove', function(e) {
+            const trail = document.createElement('div');
+            trail.className = 'trail';
+            trail.style.left = `${e.pageX}px`;
+            trail.style.top = `${e.pageY}px`;
+            document.body.appendChild(trail);
+            setTimeout(() => {
+                trail.remove();
+            }, 1000);
+        });
+    </script>
+</body>
+
+</html>
