@@ -1,43 +1,79 @@
 body {
     background-color: #0a0a23;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    font-family: monospace;
+}
+
+#game {
+    max-width: 480px;
+    width: 100%;
+    min-width: 320px;
+    min-height: 420px;
+    background-color: #fff;
+    color: #0a0a23;
+    margin: 0 auto;
+    padding: 24px 18px 32px 18px;
+    box-sizing: border-box;
+    border-radius: 14px;
+    box-shadow: 0 4px 32px rgba(0,0,0,0.18);
 }
 
 #text {
     background-color: #0a0a23;
-    color: #ffffff;
-    padding: 10px;
-}
-
-#game {
-    max-width: 500px;
-    max-height: 400px;
-    background-color: #ffffff;
-    color: #ffffff;
-
-    margin-top: 30px;
-    margin-bottom: 0px;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 10px;
+    color: #fff;
+    padding: 14px 12px;
+    border-radius: 6px;
+    margin-top: 12px;
+    margin-bottom: 18px;
+    font-size: 1rem;
+    min-height: 48px;
 }
 
 #controls,
 #stats {
     border: 1px solid #0a0a23;
     color: #0a0a23;
-    padding: 5px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    background: #f5f5f5;
+    margin-bottom: 10px;
+    font-size: 1rem;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+#controls {
+    justify-content: center;
+    background: #fffbe6;
+    border-color: #feac32;
+    gap: 18px; /* beri jarak antar tombol */
+}
+
+#stats {
+    justify-content: flex-start;
+    background: #e6e6e6;
+    border-color: #0a0a23;
 }
 
 #monsterStats {
     display: none;
-    border: 1px solid #0a0a23;
-    color: #ffffff;
-    padding: 5px;
+    border: 1px solid #c70d0d;
+    color: #fff;
+    padding: 7px 10px;
     background-color: #c70d0d;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 1rem;
 }
 
 .stat {
-    padding-right: 10px;
+    padding-right: 12px;
+    font-weight: bold;
 }
 
 button {
@@ -45,5 +81,35 @@ button {
     color: #0a0a23;
     background-color: #feac32;
     background-image: linear-gradient(#fecc4c, #ffac33);
-    border: 3px solid #feac32;
+    border: 2px solid #feac32;
+    border-radius: 6px;
+    padding: 8px 18px;
+    margin-right: 6px;
+    font-size: 1rem;
+    font-family: inherit;
+    font-weight: bold;
+    transition: background 0.2s, transform 0.1s;
+}
+
+button:hover{
+    background-color: #ffd966;
+    background-image: none;
+    /* Hapus efek scale dan translate */
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    #game {
+        max-width: 98vw;
+        min-width: unset;
+        padding: 10px 2vw 18px 2vw;
+    }
+    #text {
+        font-size: 0.95rem;
+        padding: 10px 6px;
+    }
+    button {
+        font-size: 0.95rem;
+        padding: 7px 10px;
+    }
 }
